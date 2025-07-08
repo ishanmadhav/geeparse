@@ -241,3 +241,7 @@ func fileURI(path string) protocol.DocumentURI {
 	abs, _ := filepath.Abs(path)
 	return protocol.DocumentURI("file://" + filepath.ToSlash(abs))
 }
+
+func utilFunc() {
+
+}
