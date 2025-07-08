@@ -245,3 +245,7 @@ func fileURI(path string) protocol.DocumentURI {
 func utilFunc() {
 
 }
+
+func someChangesToThisFunc() {
+
+}
