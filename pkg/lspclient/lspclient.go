@@ -9,6 +9,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 
 	"go.lsp.dev/jsonrpc2"
 	"go.lsp.dev/protocol"
@@ -244,4 +245,38 @@ func fileURI(path string) protocol.DocumentURI {
 
 func utilFunc() {
 
+}
+
+// parseLogs parses log lines and returns a summary count of each log level.
+func parseLogs(logs []string) map[string]int {
+	summary := map[string]int{
+		"INFO":  0,
+		"WARN":  0,
+		"ERROR": 0,
+		"DEBUG": 0,
+	}
+
+	for _, line := range logs {
+		// Trim and standardize line
+		line = strings.TrimSpace(line)
+		if line == "" {
+			continue
+		}
+
+		// Split log level and message
+		parts := strings.SplitN(line, ":", 2)
+		if len(parts) < 2 {
+			fmt.Printf("Skipping malformed log line: %s\n", line)
+			continue
+		}
+
+		level := strings.ToUpper(strings.TrimSpace(parts[0]))
+		if _, exists := summary[level]; exists {
+			summary[level]++
+		} else {
+			fmt.Printf("Unknown log level found: %s\n", level)
+		}
+	}
+
+	return summary
 }
