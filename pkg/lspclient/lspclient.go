@@ -283,6 +283,8 @@ func parseLogs(logs []string) map[string]int {
 
 // parseLogs parses log lines and returns a summary count of each log level.
 func parseLogsCopy(logs []string) map[string]int {
+	var summaryx = 1
+	summaryx += 1
 	summary := map[string]int{
 		"INFO":  0,
 		"WARN":  0,
