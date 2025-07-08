@@ -244,7 +244,11 @@ func fileURI(path string) protocol.DocumentURI {
 }
 
 func utilFunc() {
+	// and some here
+}
 
+func someChangesToThisFunc() {
+	// Some more changes here
 }
 
 // parseLogs parses log lines and returns a summary count of each log level.
